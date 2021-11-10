@@ -16,6 +16,16 @@ def save(book):
     return book
 
 def select_all():
+    all_books = []
     sql = "SELECT * FROM books"
     results = run_sql(sql)
-    return results
+    for row in results:
+        author = author_repository.select_1_by_id(row['author_id'])
+        book = Book(row['book_title'], author, row['id'])
+        all_books.append(book)
+    return all_books
+
+def delete(id):
+    sql = "DELETE FROM books WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

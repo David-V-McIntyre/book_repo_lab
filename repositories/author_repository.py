@@ -10,3 +10,8 @@ def save(author):
     author.id = id
     return author
 
+def select_1_by_id(id):
+    sql = "SELECT * FROM authors WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)[0]
+    return results

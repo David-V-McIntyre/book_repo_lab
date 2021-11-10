@@ -1,3 +1,4 @@
+import pdb
 from models.author import Author
 from models.book import Book
 
@@ -22,9 +23,12 @@ import repositories.author_repository as author_repository
 # book_3 = Book("American Psycho", author_3)
 # book_repository.save(book_3)
 
-def print_all():
-    results = book_repository.select_all()
-    for row in results:
-        print(row)
+results = book_repository.select_all()
+for row in results:
+    print(row.__dict__)
 
-print_all()
+book_repository.delete(1)
+
+results = book_repository.select_all()
+for row in results:
+    print(row.__dict__)
