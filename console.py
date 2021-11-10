@@ -32,3 +32,9 @@ book_repository.delete(1)
 results = book_repository.select_all()
 for row in results:
     print(row.__dict__)
+
+print("------------- SELECT ONLY ONE BOOK --------------")
+results = book_repository.select_1_by_id(2)
+print(results.__dict__)
+# for row in results:
+#     print(row.__dict__)
